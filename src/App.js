@@ -37,6 +37,7 @@ function App() {
     setIsRunning(false);
   }
 
+  // Function
   const startGraph = () => {
     console.log("Start!")
     setIsRunning(true);
