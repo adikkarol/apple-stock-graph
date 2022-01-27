@@ -8,12 +8,13 @@ const api = axios.create({
 })
 
 function App() {
-  // Hard-Coded Data
+
   const [data, setData] = useState([]) 
   
   // Stop/Start variable
   const [isRunning, setIsRunning] = useState(false);
 
+  // Get Data + set Interval
   useEffect(() => {
     if (isRunning){
       const intervalID = setInterval(() => {
@@ -24,9 +25,6 @@ function App() {
           let array = [...data, val]
           setData(array);
         })
-        
-        //Shift function
-        // array.shift();
       }, 5000)
       return () => {
         clearInterval(intervalID); // clear the interval in the cleanup function
@@ -34,22 +32,6 @@ function App() {
     }
   },[data, isRunning])
   
-  // UseEffect to change data
-  // useEffect(() => {
-  //   if (isRunning){
-  //     const intervalID = setInterval(() => {
-  //       const val = Math.floor(Math.random() * 100 + 100)
-  //       let array = [...data, val]
-  //       //Shift function
-  //       // array.shift();
-  //       setData(array);
-  //     }, 2000)
-  //     return () => {
-  //       clearInterval(intervalID); // clear the interval in the cleanup function
-  //     }
-  //   }
-  // }, [data, isRunning])
-
   const stopGraph = () => {
     console.log("Stop!")
     setIsRunning(false);
